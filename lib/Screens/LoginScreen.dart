@@ -102,7 +102,7 @@ class _BodyState extends State<Body> {
               padding: const EdgeInsets.all(20.0),
               child: Container(
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green, width: 2),
+                    border: Border.all(color: Colors.lightBlue, width: 2),
                     borderRadius: BorderRadius.circular(8)),
                 child: Padding(
                   padding: const EdgeInsets.all(6.0),
@@ -174,7 +174,7 @@ class _BodyState extends State<Body> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                   fixedSize: Size(200, 50),
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.lightBlue,
                   primary: Colors.white),
               onPressed: () {
                 if (readPrivacy && readTerms == !false) {

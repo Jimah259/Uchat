@@ -168,20 +168,8 @@ class _IndividualPageState extends State<IndividualPage> {
                         value: "Media, links, and docs",
                       ),
                       PopupMenuItem(
-                        child: Text("Whatsapp Web"),
-                        value: "Whatsapp Web",
-                      ),
-                      PopupMenuItem(
                         child: Text("Search"),
                         value: "Search",
-                      ),
-                      PopupMenuItem(
-                        child: Text("Mute Notification"),
-                        value: "Mute Notification",
-                      ),
-                      PopupMenuItem(
-                        child: Text("Wallpaper"),
-                        value: "Wallpaper",
                       ),
                     ];
                   },
@@ -383,7 +371,7 @@ class _IndividualPageState extends State<IndividualPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   iconCreation(
-                      Icons.insert_drive_file, Colors.indigo, "Document"),
+                      Icons.insert_drive_file, Colors.blue, "Document"),
                   SizedBox(
                     width: 40,
                   ),
@@ -408,7 +396,7 @@ class _IndividualPageState extends State<IndividualPage> {
                   SizedBox(
                     width: 40,
                   ),
-                  iconCreation(Icons.person, Colors.blue, "Contact"),
+                  iconCreation(Icons.person, Colors.indigo, "Contact"),
                 ],
               ),
             ],

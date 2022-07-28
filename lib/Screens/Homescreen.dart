@@ -1,6 +1,7 @@
 import 'package:chatapp/Model/ChatModel.dart';
 import 'package:chatapp/Pages/CameraPage.dart';
 import 'package:chatapp/Pages/ChatPage.dart';
+import 'package:chatapp/Pages/MomentPage.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
@@ -81,7 +82,7 @@ class _HomescreenState extends State<Homescreen>
             chatmodels: widget.chatmodels,
             sourchat: widget.sourchat,
           ),
-          Text("Moments"),
+          MomentPage(),
           Text("Calls"),
         ],
       ),

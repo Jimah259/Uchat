@@ -44,10 +44,6 @@ class _HomescreenState extends State<Homescreen>
                   value: "New group",
                 ),
                 PopupMenuItem(
-                  child: Text("New Broadcast"),
-                  value: "New Broadcast",
-                ),
-                PopupMenuItem(
                   child: Text("Settings"),
                   value: "Settings",
                 ),

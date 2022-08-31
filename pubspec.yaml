@@ -44,6 +44,7 @@ dependencies:
   socket_io_client: ^2.0.0
   intl_phone_number_input: ^0.7.0+2
   cached_network_image: ^3.2.1
+  firebase_auth: ^3.7.0
 
 
 dev_dependencies:

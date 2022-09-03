@@ -2,6 +2,7 @@ import 'package:chatapp/Model/ChatModel.dart';
 import 'package:chatapp/Pages/CameraPage.dart';
 import 'package:chatapp/Pages/ChatPage.dart';
 import 'package:chatapp/Pages/MomentPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
@@ -17,6 +18,8 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen>
     with SingleTickerProviderStateMixin {
   TabController? _controller;
+
+  
   @override
   void initState() {
     super.initState();
@@ -75,8 +78,7 @@ class _HomescreenState extends State<Homescreen>
         children: [
           CameraPage(),
           ChatPage(
-            chatmodels: widget.chatmodels,
-            sourchat: widget.sourchat,
+            
           ),
           MomentPage(),
           Text("Calls"),

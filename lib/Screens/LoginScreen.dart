@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:chatapp/CustomUI/ButtonCard.dart';
 import 'package:chatapp/Model/ChatModel.dart';
 import 'package:chatapp/Screens/Homescreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -78,6 +79,7 @@ class _BodyState extends State<Body> {
   String? smsCode;
   AuthCredential? _credential;
   TextEditingController _codeController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool readTerms = true;
   bool readPrivacy = true;
@@ -92,8 +94,20 @@ class _BodyState extends State<Body> {
     id: 1,
   );
 
-  Future registerUser(String mobile, BuildContext context) async {
+  Future registerUser(String mobile, String name, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
+
+    final user = <String, String>{
+      "name": name,
+      "lastSeen": DateTime.now.toString(),
+      "number": mobile
+    };
+
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc()
+        .set(user)
+        .onError((e, _) => print("Error writing document: $e"));
 
     _auth.verifyPhoneNumber(
         phoneNumber: mobile,
@@ -164,7 +178,7 @@ class _BodyState extends State<Body> {
         codeAutoRetrievalTimeout: (String verificationId) {
           verificationId = verificationId;
           print(verificationId);
-          print("Timout");
+          print("Time out");
         });
   }
 
@@ -179,8 +193,26 @@ class _BodyState extends State<Body> {
               height: 80,
             ),
             Text(
-              'Your Phone number',
+              'Register',
               style: TextStyle(fontSize: 20),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    _nameController.text = value;
+                  });
+                },
+                decoration: InputDecoration(
+                    labelText: 'Name',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.blue, width: 2),
+                    ),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8))),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -273,7 +305,8 @@ class _BodyState extends State<Body> {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
 
-                    registerUser(phone!.phoneNumber!, context);
+                    registerUser(phone!.phoneNumber!,
+                        _nameController.text.trim(), context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),
                     );
@@ -290,6 +323,16 @@ class _BodyState extends State<Body> {
                 'Next',
               ),
             ),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (ctx) => Homescreen(
+                              chatmodels: [demoChat], sourchat: demoChat)),
+                      (route) => false);
+                },
+                child: Text('skip'))
           ],
         ),
       ),

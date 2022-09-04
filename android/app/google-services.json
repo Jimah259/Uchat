@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "1077917952926",
-    "project_id": "chatapp-dd2d1",
-    "storage_bucket": "chatapp-dd2d1.appspot.com"
+    "project_number": "248312183900",
+    "project_id": "yuchat-15551",
+    "storage_bucket": "yuchat-15551.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1077917952926:android:754e0b39ae4d78a99f848f",
+        "mobilesdk_app_id": "1:248312183900:android:9fec2b431d47fd9faeba99",
         "android_client_info": {
-          "package_name": "com.example.chatapp"
+          "package_name": "com.jimah.chatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1077917952926-02m9m8se7sutmluabrl0haufau90jjen.apps.googleusercontent.com",
+          "client_id": "248312183900-ncvsrspe5pc58nuo49gu02s2i0fhspap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jimah.chatapp",
+            "certificate_hash": "e1a4cec883cf06391924a0386ab0177cc55e314c"
+          }
+        },
+        {
+          "client_id": "248312183900-hf02kponnsb09koo0ntr5gc00u7n11ff.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDjDK8FahWd1SabU9eQp2bUGC5y3_GlDko"
+          "current_key": "AIzaSyAYWER4xGiBVz0CK8ix9_3KrvgoikJ4OMI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1077917952926-02m9m8se7sutmluabrl0haufau90jjen.apps.googleusercontent.com",
+              "client_id": "248312183900-hf02kponnsb09koo0ntr5gc00u7n11ff.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -4,10 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key, required this.chatModel, required this.sourchat})
-      : super(key: key);
-  final ChatModel chatModel;
-  final ChatModel sourchat;
+  const CustomCard({
+    Key? key,
+    required this.recieverNumber,
+    required this.senderNumber,
+    required this.recieverName,
+    required this.recentMessage,
+    required this.time,
+  }) : super(key: key);
+  final String? recieverNumber;
+  final String? senderNumber;
+  final String? recieverName;
+  final String? recentMessage;
+  final String? time;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +26,8 @@ class CustomCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (contex) => IndividualPage(
-                      chatModel: chatModel,
-                      sourchat: sourchat,
+                      receiverNumber: recieverNumber,
+                      senderNumber: senderNumber,
                     )));
       },
       child: Column(
@@ -27,7 +36,7 @@ class CustomCard extends StatelessWidget {
             leading: CircleAvatar(
               radius: 30,
               child: SvgPicture.asset(
-                chatModel.isGroup! ? "assets/groups.svg" : "assets/person.svg",
+                "assets/person.svg",
                 color: Colors.white,
                 height: 36,
                 width: 36,
@@ -35,7 +44,7 @@ class CustomCard extends StatelessWidget {
               backgroundColor: Colors.blueGrey,
             ),
             title: Text(
-              chatModel.name!,
+              recieverName!,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -48,14 +57,14 @@ class CustomCard extends StatelessWidget {
                   width: 3,
                 ),
                 Text(
-                  chatModel.currentMessage!,
+                  recentMessage!,
                   style: TextStyle(
                     fontSize: 13,
                   ),
                 ),
               ],
             ),
-            trailing: Text(chatModel.time!),
+            trailing: Text(time!),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 20, left: 80),

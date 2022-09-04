@@ -9,8 +9,7 @@ class ChatPage extends StatefulWidget {
   ChatPage({
     Key? key,
   }) : super(key: key);
-  // final List<ChatModel> chatmodels;
-  // final ChatModel sourchat;
+  
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -18,14 +17,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final auth = FirebaseAuth.instance.currentUser!;
-  //late User? sender = auth;
-  // final Stream<QuerySnapshot> _mychatStream = FirebaseFirestore.instance
-  //     .collection('chats')
-  //     .where("sender", isEqualTo: sender!.phoneNumber)
-  //     .orderBy("time");
 
-//       final citiesRef = db.collection("cities");
-// citiesRef.where("population", isGreaterThan: 100000).orderBy("population");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,8 +67,3 @@ class _ChatPageState extends State<ChatPage> {
         ));
   }
 }
-
-
-// Widget build(BuildContext context) {
-//     return 
-//   }

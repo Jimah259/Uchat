@@ -6,10 +6,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
-  Homescreen({Key? key, required this.chatmodels, required this.sourchat})
+  Homescreen({Key? key,})
       : super(key: key);
-  final List<ChatModel> chatmodels;
-  final ChatModel sourchat;
+  // final List<ChatModel> chatmodels;
+  // final ChatModel sourchat;
 
   @override
   _HomescreenState createState() => _HomescreenState();

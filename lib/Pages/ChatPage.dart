@@ -17,7 +17,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final  auth = FirebaseAuth.instance.currentUser!;
+  final auth = FirebaseAuth.instance.currentUser!;
   //late User? sender = auth;
   // final Stream<QuerySnapshot> _mychatStream = FirebaseFirestore.instance
   //     .collection('chats')
@@ -52,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Loading");
+              return Center(child: CircularProgressIndicator());
             }
 
             return ListView(

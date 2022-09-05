@@ -47,25 +47,6 @@ class _IndividualPageState extends State<IndividualPage> {
     //connect();
   }
 
-  // void connect() {
-  //   // MessageModel messageModel = MessageModel(sourceId: widget.sourceChat.id.toString(),targetId: );
-  //   socket = IO.io("http://192.168.0.106:5000", <String, dynamic>{
-  //     "transports": ["websocket"],
-  //     "autoConnect": false,
-  //   });
-  //   socket!.connect();
-  //   socket!.emit("signin", widget.sourchat.id);
-  //   socket!.onConnect((data) {
-  //     print("Connected");
-  //     socket!.on("message", (msg) {
-  //       print(msg);
-  //       setMessage("destination", msg["message"]);
-  //       _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-  //           duration: Duration(milliseconds: 300), curve: Curves.easeOut);
-  //     });
-  //   });
-  //   print(socket!.connected);
-  // }
 
   void sendMessage(String message, String sender, String reciever) {
     final _message = <String, String>{
@@ -73,7 +54,7 @@ class _IndividualPageState extends State<IndividualPage> {
   "senderName": 'contact',
   "reciever": reciever,
   "message": message,
-  "time":  DateTime.now().toString().substring(10, 16),
+  "time":  DateTime.now().toString(),
 };
 
 FirebaseFirestore.instance.collection("chats")

@@ -118,6 +118,7 @@ class _IndividualPageState extends State<IndividualPage> {
                           fontSize: 18.5,
                           fontWeight: FontWeight.bold,
                         ),
+                        //
                       ),
                       Text(
                         "last seen today at 12:05",

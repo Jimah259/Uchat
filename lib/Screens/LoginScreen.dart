@@ -115,12 +115,7 @@ class _BodyState extends State<Body> {
         verificationCompleted: (AuthCredential authCredential) {
           _auth.signInWithCredential(authCredential).then((result) {
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Homescreen(
-                          chatmodels: [demoChat],
-                          sourchat: demoChat,
-                        )));
+                context, MaterialPageRoute(builder: (context) => Homescreen()));
           }).catchError((e) {
             print(e);
           });
@@ -163,10 +158,7 @@ class _BodyState extends State<Body> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Homescreen(
-                                          chatmodels: [demoChat],
-                                          sourchat: demoChat,
-                                        )));
+                                    builder: (context) => Homescreen()));
                           }).catchError((e) {
                             print(e);
                           });
@@ -212,6 +204,12 @@ class _BodyState extends State<Body> {
                     ),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8))),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter Your UserName';
+                  }
+                  return null;
+                },
               ),
             ),
             Padding(
@@ -327,9 +325,7 @@ class _BodyState extends State<Body> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (ctx) => Homescreen(
-                              chatmodels: [demoChat], sourchat: demoChat)),
+                      MaterialPageRoute(builder: (ctx) => Homescreen()),
                       (route) => false);
                 },
                 child: Text('skip'))

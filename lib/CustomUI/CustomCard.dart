@@ -6,14 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomCard extends StatelessWidget {
   const CustomCard({
     Key? key,
-    required this.recieverNumber,
-    required this.senderNumber,
+    required this.reciever,
+    required this.sender,
     required this.recieverName,
     required this.recentMessage,
     required this.time,
   }) : super(key: key);
-  final String? recieverNumber;
-  final String? senderNumber;
+  final String? reciever;
+  final String? sender;
   final String? recieverName;
   final String? recentMessage;
   final String? time;
@@ -26,8 +26,8 @@ class CustomCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (contex) => IndividualPage(
-                      receiverNumber: recieverNumber,
-                      senderNumber: senderNumber,
+                      receiverNumber: reciever,
+                      senderNumber: sender,
                     )));
       },
       child: Column(

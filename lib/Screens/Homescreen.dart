@@ -2,14 +2,16 @@ import 'package:chatapp/Model/ChatModel.dart';
 import 'package:chatapp/Pages/CameraPage.dart';
 import 'package:chatapp/Pages/ChatPage.dart';
 import 'package:chatapp/Pages/MomentPage.dart';
+import 'package:chatapp/Screens/GroupScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
-  Homescreen({Key? key, required this.chatmodels, required this.sourchat})
-      : super(key: key);
-  final List<ChatModel> chatmodels;
-  final ChatModel sourchat;
+  Homescreen({
+    Key? key,
+  }) : super(key: key);
+  // final List<ChatModel> chatmodels;
+  // final ChatModel sourchat;
 
   @override
   _HomescreenState createState() => _HomescreenState();
@@ -19,7 +21,6 @@ class _HomescreenState extends State<Homescreen>
     with SingleTickerProviderStateMixin {
   TabController? _controller;
 
-  
   @override
   void initState() {
     super.initState();
@@ -65,10 +66,10 @@ class _HomescreenState extends State<Homescreen>
               text: "CHATS",
             ),
             Tab(
-              text: "MOMENTS",
+              text: "GROUPS",
             ),
             Tab(
-              text: "CALLS",
+              text: "MOMENTS",
             )
           ],
         ),
@@ -77,11 +78,9 @@ class _HomescreenState extends State<Homescreen>
         controller: _controller,
         children: [
           CameraPage(),
-          ChatPage(
-            
-          ),
+          ChatPage(),
+          GroupPage(),
           MomentPage(),
-          Text("Calls"),
         ],
       ),
     );

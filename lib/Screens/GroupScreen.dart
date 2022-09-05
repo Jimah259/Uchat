@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:chatapp/CustomUI/CustomCard.dart';
 import 'package:chatapp/Model/ChatModel.dart';
 import 'package:chatapp/Screens/SelectContact.dart';
@@ -7,21 +5,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatefulWidget {
-  ChatPage({
+class GroupPage extends StatefulWidget {
+  GroupPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _GroupPageState createState() => _GroupPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _GroupPageState extends State<GroupPage> {
   final auth = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
-    log(auth.phoneNumber!);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -35,8 +32,8 @@ class _ChatPageState extends State<ChatPage> {
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
-              .collection('chats')
-              .where('sender', isEqualTo: auth.phoneNumber)
+              .collection('group')
+              .where("members", arrayContains: auth.phoneNumber)
               .orderBy('time', descending: true)
               .snapshots(),
           builder:
@@ -54,12 +51,6 @@ class _ChatPageState extends State<ChatPage> {
                   .map((DocumentSnapshot document) {
                     Map<String, dynamic> data =
                         document.data()! as Map<String, dynamic>;
-                    log(data['message']);
-                    // return ListTile(
-                    //   title: Text('sadsdas',
-                    //       style: TextStyle(color: Colors.black)),
-                    // );
-
                     return CustomCard(
                       recentMessage: data['message'],
                       time: data['time'],

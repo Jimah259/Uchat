@@ -31,11 +31,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-            fontFamily: "OpenSans",
-            primaryColor: Color(0xFF0277BD),
-            colorScheme: ColorScheme.fromSwatch()
-                .copyWith(secondary: Color(0xFF039BE5))),
-        home: defaultRoute);
+      theme: ThemeData(
+          fontFamily: "OpenSans",
+          primaryColor: Color(0xFF0277BD),
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF039BE5))),
+      home: defaultRoute,
+    );
   }
 }

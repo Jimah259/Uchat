@@ -21,6 +21,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    log(auth.phoneNumber!);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -54,18 +55,18 @@ class _ChatPageState extends State<ChatPage> {
                     Map<String, dynamic> data =
                         document.data()! as Map<String, dynamic>;
                     log(data['message']);
-                    return ListTile(
-                      title: Text('sadsdas',
-                          style: TextStyle(color: Colors.black)),
-                    );
-
-                    // CustomCard(
-                    //   recentMessage: data['message'],
-                    //   time: data['time'],
-                    //   reciever: data['sender'],
-                    //   recieverName: data['senderName'],
-                    //   sender: data['reciever'],
+                    // return ListTile(
+                    //   title: Text('sadsdas',
+                    //       style: TextStyle(color: Colors.black)),
                     // );
+
+                    return CustomCard(
+                      recentMessage: data['message'],
+                      time: data['time'],
+                      reciever: data['sender'],
+                      recieverName: data['senderName'],
+                      sender: data['reciever'],
+                    );
                   })
                   .toList()
                   .cast(),

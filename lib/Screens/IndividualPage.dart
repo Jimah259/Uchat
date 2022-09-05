@@ -47,25 +47,21 @@ class _IndividualPageState extends State<IndividualPage> {
     //connect();
   }
 
-
   void sendMessage(String message, String sender, String reciever) {
     final _message = <String, String>{
-  "sender": sender,
-  "senderName": 'contact',
-  "reciever": reciever,
-  "message": message,
-  "time":  DateTime.now().toString(),
-};
+      "sender": sender,
+      "senderName": 'contact',
+      "reciever": reciever,
+      "message": message,
+      "time": DateTime.now().toString(),
+    };
 
-FirebaseFirestore.instance.collection("chats")
-    .doc()
-    .set(_message)
-    .onError((e, _) => print("Error writing document: $e"));
-
-   
+    FirebaseFirestore.instance
+        .collection("chats")
+        .doc()
+        .set(_message)
+        .onError((e, _) => print("Error writing document: $e"));
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +93,7 @@ FirebaseFirestore.instance.collection("chats")
                     ),
                     CircleAvatar(
                       child: SvgPicture.asset(
-                        isGroup
-                            ? "assets/groups.svg"
-                            : "assets/person.svg",
+                        isGroup ? "assets/groups.svg" : "assets/person.svg",
                         color: Colors.white,
                         height: 36,
                         width: 36,

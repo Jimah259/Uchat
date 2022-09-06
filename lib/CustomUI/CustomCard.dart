@@ -8,13 +8,13 @@ class CustomCard extends StatelessWidget {
     Key? key,
     required this.reciever,
     required this.sender,
-    required this.recieverName,
+    required this.tag,
     required this.recentMessage,
     required this.time,
   }) : super(key: key);
   final String? reciever;
   final String? sender;
-  final String? recieverName;
+  final String? tag;
   final String? recentMessage;
   final String? time;
 
@@ -28,6 +28,8 @@ class CustomCard extends StatelessWidget {
                 builder: (contex) => IndividualPage(
                       receiverNumber: reciever,
                       senderNumber: sender,
+                      tag: tag,
+                      lastSeen: time,
                     )));
       },
       child: Column(
@@ -44,7 +46,7 @@ class CustomCard extends StatelessWidget {
               backgroundColor: Colors.blueGrey,
             ),
             title: Text(
-              recieverName!,
+              tag!,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import '../Model/MomentModel.dart';
 
 class MomentCard extends StatelessWidget {
@@ -13,6 +13,8 @@ class MomentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
     return InkWell(
       onTap: () {
         Navigator.push(

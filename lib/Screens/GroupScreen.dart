@@ -22,8 +22,12 @@ class _GroupPageState extends State<GroupPage> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => SelectContact()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (builder) => SelectContact(
+                          number: '',
+                        )));
           },
           child: Icon(
             Icons.chat,
@@ -55,7 +59,7 @@ class _GroupPageState extends State<GroupPage> {
                       recentMessage: data['message'],
                       time: data['time'],
                       reciever: data['sender'],
-                      recieverName: data['senderName'],
+                      tag: data['senderName'],
                       sender: data['reciever'],
                     );
                   })

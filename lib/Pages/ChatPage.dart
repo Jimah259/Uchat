@@ -6,27 +6,48 @@ import 'package:chatapp/Screens/SelectContact.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:async/async.dart' show StreamGroup;
 
 class ChatPage extends StatefulWidget {
   ChatPage({
     Key? key,
+    required this.number,
   }) : super(key: key);
-
+  final String number;
   @override
   _ChatPageState createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final auth = FirebaseAuth.instance.currentUser!;
+  String? number;
+  Stream<QuerySnapshot<Object?>>? result;
+  @override
+  void initState() {
+    number = widget.number;
+
+    result = StreamGroup.merge([
+      FirebaseFirestore.instance
+          .collection('chats')
+          .where('sender', isEqualTo: widget.number)
+          .orderBy('time', descending: true)
+          .snapshots(),
+      FirebaseFirestore.instance
+          .collection('chats')
+          .where('reciever', isEqualTo: widget.number)
+          .orderBy('time', descending: true)
+          .snapshots(),
+    ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    log(auth.phoneNumber!);
+    log(number!);
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => SelectContact()));
+                MaterialPageRoute(builder: (builder) => SelectContact(number: number!)));
           },
           child: Icon(
             Icons.chat,
@@ -34,11 +55,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         body: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance
-              .collection('chats')
-              .where('sender', isEqualTo: auth.phoneNumber)
-              .orderBy('time', descending: true)
-              .snapshots(),
+          stream: result!,
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
@@ -63,9 +80,11 @@ class _ChatPageState extends State<ChatPage> {
                     return CustomCard(
                       recentMessage: data['message'],
                       time: data['time'],
-                      reciever: data['sender'],
-                      recieverName: data['senderName'],
-                      sender: data['reciever'],
+                      reciever: data['reciever'],
+                      tag: data['sender'] == number!
+                          ? data['recieverName']
+                          : data['senderName'],
+                      sender: data['sender'],
                     );
                   })
                   .toList()

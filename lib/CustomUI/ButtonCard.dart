@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ButtonCard extends StatelessWidget {
-  const ButtonCard({Key? key, required this.name, required this.icon})
+  const ButtonCard({Key? key, required this.name, required this.icon, })
       : super(key: key);
   final String name;
   final IconData icon;
+  
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+
       leading: CircleAvatar(
         radius: 23,
         child: Icon(
@@ -25,6 +27,8 @@ class ButtonCard extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
+
+    
     );
   }
 }

@@ -13,10 +13,16 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class IndividualPage extends StatefulWidget {
   IndividualPage(
-      {Key? key, required this.senderNumber, required this.receiverNumber})
+      {Key? key,
+      required this.senderNumber,
+      required this.receiverNumber,
+      required this.tag,
+      this.lastSeen})
       : super(key: key);
   final String? senderNumber;
   final String? receiverNumber;
+  final String? tag;
+  final String? lastSeen;
 
   @override
   _IndividualPageState createState() => _IndividualPageState();
@@ -113,7 +119,7 @@ class _IndividualPageState extends State<IndividualPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.receiverNumber!,
+                        widget.tag!,
                         style: TextStyle(
                           fontSize: 18.5,
                           fontWeight: FontWeight.bold,
@@ -121,7 +127,7 @@ class _IndividualPageState extends State<IndividualPage> {
                         //
                       ),
                       Text(
-                        "last seen today at 12:05",
+                        "last seen ${widget.lastSeen}",
                         style: TextStyle(
                           fontSize: 13,
                         ),

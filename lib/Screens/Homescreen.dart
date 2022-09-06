@@ -4,6 +4,7 @@ import 'package:chatapp/Pages/ChatPage.dart';
 import 'package:chatapp/Pages/MomentPage.dart';
 import 'package:chatapp/Screens/GroupScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _HomescreenState extends State<Homescreen>
     _controller = TabController(length: 4, vsync: this, initialIndex: 1);
   }
 
+  final auth = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +80,7 @@ class _HomescreenState extends State<Homescreen>
         controller: _controller,
         children: [
           CameraPage(),
-          ChatPage(),
+          ChatPage(number: auth.phoneNumber!),
           GroupPage(),
           MomentPage(),
         ],

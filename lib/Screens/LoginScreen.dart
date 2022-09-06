@@ -100,7 +100,8 @@ class _BodyState extends State<Body> {
     final user = <String, String>{
       "name": name,
       "lastSeen": DateTime.now.toString(),
-      "number": mobile
+      "number": mobile,
+      "status": ''
     };
 
     FirebaseFirestore.instance

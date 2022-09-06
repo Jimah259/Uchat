@@ -29,6 +29,7 @@ class CustomCard extends StatelessWidget {
                       receiverNumber: reciever,
                       senderNumber: sender,
                       tag: tag,
+                      lastSeen: time,
                     )));
       },
       child: Column(

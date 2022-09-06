@@ -16,11 +16,13 @@ class IndividualPage extends StatefulWidget {
       {Key? key,
       required this.senderNumber,
       required this.receiverNumber,
-      required this.tag})
+      required this.tag,
+      this.lastSeen})
       : super(key: key);
   final String? senderNumber;
   final String? receiverNumber;
   final String? tag;
+  final String? lastSeen;
 
   @override
   _IndividualPageState createState() => _IndividualPageState();
@@ -125,7 +127,7 @@ class _IndividualPageState extends State<IndividualPage> {
                         //
                       ),
                       Text(
-                        "last seen today at 12:05",
+                        "last seen ${widget.lastSeen}",
                         style: TextStyle(
                           fontSize: 13,
                         ),

@@ -28,8 +28,6 @@ class _SelectContactState extends State<SelectContact> {
   //final auth = FirebaseAuth.instance;
   // String? number;
 
-  
-
   @override
   Widget build(BuildContext context) {
     // List<ChatModel> contacts = [
@@ -45,11 +43,11 @@ class _SelectContactState extends State<SelectContact> {
     //   ChatModel(name: "Banaya", status: "Love you Mom Dad"),
     //   ChatModel(name: "Dev Arafat", status: "I've found the bugs"),
     // ];
-Stream<QuerySnapshot<Object?>>? contacts = FirebaseFirestore.instance
-      .collection('users')
-      .where('number', isNotEqualTo: widget.number)
-      .orderBy('name', descending: true)
-      .snapshots();
+    Stream<QuerySnapshot<Object?>>? contacts = FirebaseFirestore.instance
+        .collection('users')
+        .where('number', isNotEqualTo: widget.number)
+        .orderBy('number', descending: true)
+        .snapshots();
     return Scaffold(
         appBar: AppBar(
           title: Column(
@@ -146,15 +144,16 @@ Stream<QuerySnapshot<Object?>>? contacts = FirebaseFirestore.instance
                         // setState(() {
                         //   number = auth.currentUser!.phoneNumber;
                         // });
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => IndividualPage(
-                                      tag: data['name'],
-                                      senderNumber:
-                                          widget.number,
-                                      receiverNumber: data['number'],
-                                    )));
+                        widget.number == data['number']
+                            ? null
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) => IndividualPage(
+                                          tag: data['name'],
+                                          senderNumber: widget.number,
+                                          receiverNumber: data['number'],
+                                        )));
                       },
                       name: data['name'],
                       number: data['number'],

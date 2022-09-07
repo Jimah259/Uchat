@@ -1,42 +1,54 @@
-import 'package:camera/camera.dart';
-import 'package:chatapp/Screens/CameraScreen.dart';
-import 'package:chatapp/Screens/Homescreen.dart';
-import 'package:chatapp/Screens/LoginScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_ui/common/utils/colors.dart';
+import 'package:whatsapp_ui/common/widgets/error.dart';
+import 'package:whatsapp_ui/common/widgets/loader.dart';
+import 'package:whatsapp_ui/features/auth/controller/auth_controller.dart';
+import 'package:whatsapp_ui/features/landing/screens/landing_screen.dart';
+import 'package:whatsapp_ui/firebase_options.dart';
+import 'package:whatsapp_ui/router.dart';
+import 'package:whatsapp_ui/mobile_layout_screen.dart';
 
-Widget defaultRoute = LoginScreen();
-
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  cameras = await availableCameras();
-  checkSignedIn() {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    if (_auth.currentUser == null) {
-      defaultRoute = defaultRoute;
-    } else {
-      defaultRoute = Homescreen();
-    }
-  }
-
-  checkSignedIn();
-  runApp(MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends ConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      theme: ThemeData(
-          fontFamily: "OpenSans",
-          primaryColor: Color(0xFF0277BD),
-          colorScheme:
-              ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF039BE5))),
-      home: defaultRoute,
+      debugShowCheckedModeBanner: false,
+      title: 'Whatsapp UI',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: appBarColor,
+        ),
+      ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: ref.watch(userDataAuthProvider).when(
+            data: (user) {
+              if (user == null) {
+                return const LandingScreen();
+              }
+              return const MobileLayoutScreen();
+            },
+            error: (err, trace) {
+              return ErrorScreen(
+                error: err.toString(),
+              );
+            },
+            loading: () => const Loader(),
+          ),
     );
   }
 }

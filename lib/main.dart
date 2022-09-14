@@ -28,10 +28,10 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Whatsapp UI',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor,
+      theme: ThemeData.light().copyWith(
+        //scaffoldBackgroundColor: backgroundColor,
         appBarTheme: const AppBarTheme(
-          color: appBarColor,
+          color: Colors.blue,
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),

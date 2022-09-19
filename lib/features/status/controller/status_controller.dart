@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,6 +37,7 @@ class StatusController {
 
   Future<List<Status>> getStatus(BuildContext context) async {
     List<Status> statuses = await statusRepository.getStatus(context);
+    log(statuses.length.toString());
     return statuses;
   }
 }

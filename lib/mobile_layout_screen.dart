@@ -118,27 +118,6 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
             Text('Calls here')
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            if (tabBarController.index == 0) {
-              Navigator.pushNamed(context, SelectContactsScreen.routeName);
-            } else {
-              File? pickedImage = await pickImageFromGallery(context);
-              if (pickedImage != null) {
-                Navigator.pushNamed(
-                  context,
-                  ConfirmStatusScreen.routeName,
-                  arguments: pickedImage,
-                );
-              }
-            }
-          },
-          backgroundColor: tabColor,
-          child: const Icon(
-            Icons.comment,
-            color: Colors.white,
-          ),
-        ),
       ),
     );
   }

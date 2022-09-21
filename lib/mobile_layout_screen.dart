@@ -23,7 +23,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
   @override
   void initState() {
     super.initState();
-    tabBarController = TabController(length: 3, vsync: this);
+    tabBarController = TabController(length: 2, vsync: this);
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -51,7 +51,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -61,19 +61,19 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
             'Yuchat',
             style: TextStyle(
               fontSize: 20,
-              color: Colors.grey,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.search, color: Colors.grey),
-              onPressed: () {},
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.search, color: Colors.white),
+            //   onPressed: () {},
+            // ),
             PopupMenuButton(
               icon: const Icon(
                 Icons.more_vert,
-                color: Colors.grey,
+                color: Colors.white,
               ),
               itemBuilder: (context) => [
                 PopupMenuItem(
@@ -93,7 +93,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
             indicatorColor: tabColor,
             indicatorWeight: 4,
             labelColor: tabColor,
-            unselectedLabelColor: Colors.grey,
+            unselectedLabelColor: Colors.indigo,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -104,9 +104,9 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
               Tab(
                 text: 'MOMENTS',
               ),
-              Tab(
-                text: 'CALLS',
-              ),
+              // Tab(
+              //   text: 'CALLS',
+              // ),
             ],
           ),
         ),
@@ -115,7 +115,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
           children: const [
             ContactsList(),
             StatusContactsScreen(),
-            Text('Calls here')
+            // Text('Calls here')
           ],
         ),
       ),

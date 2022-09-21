@@ -32,7 +32,7 @@ class ConfirmStatusScreen extends ConsumerWidget {
           color: Colors.white,
         ),
         onPressed: () => addStatus(ref, context),
-        backgroundColor: tabColor,
+        backgroundColor: Colors.blue,
       ),
     );
   }

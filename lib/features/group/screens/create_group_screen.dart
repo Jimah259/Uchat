@@ -106,7 +106,7 @@ class _CreateGroupScreenState extends ConsumerState<CreateGroupScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createGroup,
-        backgroundColor: tabColor,
+        backgroundColor: Colors.blue,
         child: const Icon(
           Icons.done,
           color: Colors.white,

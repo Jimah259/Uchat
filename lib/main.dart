@@ -27,7 +27,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Whatsapp UI',
+      title: 'YuChat',
       theme: ThemeData.light().copyWith(
         //scaffoldBackgroundColor: backgroundColor,
         appBarTheme: const AppBarTheme(

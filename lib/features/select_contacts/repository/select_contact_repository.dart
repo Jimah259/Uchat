@@ -23,7 +23,9 @@ class SelectContactRepository {
     List<Contact> contacts = [];
     try {
       if (await FlutterContacts.requestPermission()) {
-        contacts = await FlutterContacts.getContacts(withProperties: true);
+        //contacts = await FlutterContacts.getContacts(withProperties: true);
+        contacts = await FlutterContacts.getContacts(
+            withProperties: true, withPhoto: true);
       }
     } catch (e) {
       debugPrint(e.toString());

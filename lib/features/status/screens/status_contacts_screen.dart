@@ -21,11 +21,11 @@ class StatusContactsScreen extends ConsumerWidget {
     return FutureBuilder<List<Status>>(
       future: ref.read(statusControllerProvider).getStatus(context),
       builder: (context, snapshot) {
-        if (snapshot.data!.isEmpty) {
+        if (snapshot.hasData == false) {
           return Scaffold(
             body: Center(
               child: const Text(
-                'No Status posted',
+                'No Moments posted',
                 style: TextStyle(fontSize: 20, color: Colors.black),
               ),
             ),
